@@ -15,7 +15,12 @@ def mathparser(str_in):
         else:
             item0=numstack.pop(-1)
             item1=numstack.pop(-1)
-            result=str(eval(item0+item+item1))
+            if item=='+':
+                result=int(item0)+int(item1)
+            elif item=='*':
+                result=int(item0)*int(item1)
+            else:
+                raise ValueError('illegal item is {}'.format(item))
             numstack.append(result)
     return numstack[0]
 #mathparser('( 5 + ( ( ( 2 ) + 4 ) * 2 ) )')
